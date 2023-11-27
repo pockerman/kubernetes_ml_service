@@ -1,0 +1,20 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: serve
+  labels:
+    app: serve
+    rel: stable
+spec:
+  containers:
+  - name: serve-api
+    image: alexgiavaras/kubernetes-ml-serve-api:0.1
+    imagePullPolicy: Always
+    ports:
+    - name: http
+      containerPort: 8080
+    readinessProbe:
+      httpGet:
+        port: 8080
+        path: /healthz/ready
+        scheme: HTTP
