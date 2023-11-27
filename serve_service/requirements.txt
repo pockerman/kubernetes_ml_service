@@ -1,0 +1,7 @@
+uvicorn
+fastapi
+loguru
+requests
+pydantic
+numpy
+scikit-learn
