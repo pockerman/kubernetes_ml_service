@@ -1,0 +1,20 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: info-api
+  labels:
+    app: info-api
+    rel: stable
+spec:
+  containers:
+  - name: info-api
+    image: alexgiavaras/kubernetes-ml-info-api:0.1
+    imagePullPolicy: Always
+    ports:
+    - name: http
+      containerPort: 8080
+    readinessProbe:
+      httpGet:
+        port: 8080
+        path: /healthz/ready
+        scheme: HTTP
