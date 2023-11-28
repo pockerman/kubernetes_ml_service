@@ -1,0 +1,23 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: ml-system-service-api-com
+spec:
+  rules:
+  - host: ml-system-service-api.com
+    http:
+      paths:
+      - path: /serve
+        pathType: Exact
+        backend:
+          service:
+            name: ml-serve-api
+            port:
+              name: http
+      - path: /train
+        pathType: Prefix
+        backend:
+          service:
+            name: ml-train-api
+            port:
+              name: http
