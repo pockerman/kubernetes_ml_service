@@ -3,21 +3,26 @@ kind: Ingress
 metadata:
   name: ml-system-service-api-com
 spec:
+  defaultBackend:
+    service:
+      name: service-404
+      port:
+        name: http
   rules:
   - host: ml-system-service-api.com
     http:
       paths:
+      - path: /info
+        pathType: Exact
+        backend:
+          service:
+            name: ml-info-api
+            port:
+              name: http
       - path: /serve
         pathType: Exact
         backend:
           service:
             name: ml-serve-api
-            port:
-              name: http
-      - path: /train
-        pathType: Prefix
-        backend:
-          service:
-            name: ml-train-api
             port:
               name: http

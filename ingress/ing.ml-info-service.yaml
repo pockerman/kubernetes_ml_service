@@ -11,6 +11,6 @@ spec:
         pathType: Prefix
         backend:
           service:
-            name: ml-info-service
+            name: ml-info-api
             port:
               number: 80    # could also use "name: http" instead of "number: 80"
