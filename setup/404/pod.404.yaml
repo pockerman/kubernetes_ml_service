@@ -1,0 +1,19 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: service-404
+  labels:
+    app: service-404
+    rel: stable
+spec:
+  containers:
+  - name: service-404
+    image: luksa/static-http-server
+    imagePullPolicy: Always
+    args:
+    - --listen-port=8080
+    - --response-code=404
+    - --text=This isn't the URL you're looking for.
+    ports:
+    - name: http
+      containerPort: 8003
